@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+	<script src="https://sdk.amazonaws.com/js/aws-sdk-2.985.0.min.js"></script>
+
+</head>
+<body>
+
+</body>
+<script>
+
+	const config={
+		 accessKeyId:"AKIA3ZOTAWIIRMR6NS7W",
+	    secretAccessKey:"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",
+	    region:"ap-south-1",
+	}
+
+	const sendingEmail=async ()=>{
+
+
+
+		const emailInfo={
+				Destination:{
+					ToAddresses:[
+						"rahulmaurya55.rm@gmail.com",
+					]
+				},
+				Message:{
+					Subject:{
+						Charset:"UTF-8",
+						Data:"Email from frontwap"
+					},
+					Body:{
+						Html:{
+							Charset:"UTF-8",
+							Data:"<h1>Testing </h1> "
+						}
+					}
+				},
+				Source:"rahulmaurya1234527@gmail.com"
+		}
+
+		const aws=new AWS.SES(config)
+
+		try{
+				 const response=await aws.sendEmail(emailInfo);
+				 console.log("sending success");
+		}
+		catch(error)
+		{
+			console.log("Unable to send email");
+		}
+
+
+		}
+
+</script>
+</html>
